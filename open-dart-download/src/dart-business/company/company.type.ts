@@ -1,3 +1,5 @@
+import { Qrt, isQrt } from "../../dateHandler/date.type";
+
 export type Company = {
   corp_code: string;
   corp_name: string;
@@ -13,11 +15,6 @@ export const isStockCompany = (company: Company): company is StockCompay => {
   }
   return company.stock_code.length === 6;
 };
-
-export const isQrt = (num: number): num is Qrt => {
-  return [1, 2, 3, 4].includes(num);
-};
-export type Qrt = 1 | 2 | 3 | 4;
 
 export const REPORT_CODE = {
   1: "11013",
