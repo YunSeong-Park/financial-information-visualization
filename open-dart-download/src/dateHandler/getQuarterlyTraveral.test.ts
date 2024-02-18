@@ -47,10 +47,9 @@ describe("getQuarterlyTraveral", () => {
     const end: QrtDate = { year: 2020, qrt: 4 };
 
     const act = () => {
-      getQrtTraversal(start, end);
+      [...getQrtTraversal(start, end)];
     };
-
-    expect(act).toThrow("start date가 end date 이후 날짜입낟.");
+    expect(act).toThrow("start date가 end date 이후 날짜입니다.");
   });
 
   test("startDate가 endDate 이후인 경우 Error 발생 - 분기", () => {
@@ -58,9 +57,8 @@ describe("getQuarterlyTraveral", () => {
     const end: QrtDate = { year: 2021, qrt: 3 };
 
     const act = () => {
-      getQrtTraversal(start, end);
+      [...getQrtTraversal(start, end)];
     };
-
-    expect(act).toThrow("start date가 end date 이후 날짜입낟.");
+    expect(act).toThrow("start date가 end date 이후 날짜입니다.");
   });
 });
