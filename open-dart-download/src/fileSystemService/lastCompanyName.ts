@@ -10,6 +10,9 @@ export const writeLastCompanyName = (companyName: string) => {
 };
 
 export const readLastCompanyName = () => {
+  if (!fs.existsSync(`${PATH}/${FILE_NAME}`)) {
+    return "";
+  }
   const companyName = fs.readFileSync(`${PATH}/${FILE_NAME}`, "utf-8");
 
   return companyName;
