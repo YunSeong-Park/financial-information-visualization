@@ -5,7 +5,7 @@ import { readPublicCompanyList } from "../fileSystemService/publicCompanyList";
 function* getCompanyIter(startCompony?: string): IterableIterator<Company> {
   const companyList = readPublicCompanyList().filter((company) => {
     const year = Number(company.modify_date.slice(0, 4));
-    return year >= 2017;
+    return year >= 2018;
   });
 
   const lastCompanyName = readLastCompanyName();
