@@ -2,9 +2,9 @@ import * as dotenv from "dotenv";
 import axios from "axios";
 import {
   FnCFSReport,
-  Qrt,
   REPORT_CODE,
 } from "../dart-business/company/company.type";
+import { Qrt } from "../dateHandler/date.type";
 
 // .env 파일에서 환경 변수 로드
 dotenv.config();
