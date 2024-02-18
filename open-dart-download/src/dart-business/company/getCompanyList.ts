@@ -21,3 +21,9 @@ const getCompanyList = async (): Promise<Company[]> => {
 };
 
 export default getCompanyList;
+
+export const getPublicCompanyList = async () => {
+  const companyList = await getCompanyList();
+
+  return companyList.filter((company) => !!Number(company.stock_code));
+};
