@@ -1,10 +1,10 @@
 import { Company } from "../dart-business/company/company.type";
 import getFnReport from "../dart-business/company/getFnReport";
 import { QrtDate } from "../dateHandler/date.type";
-import { FILE_ROOT_PATH } from "./fileSystem.const";
+import { FN_REPORT_PATH } from "./fileSystem.const";
 import writeFileWithDirectory from "./writeFileWithDirectory";
 
-const PATH = FILE_ROOT_PATH + "/fn-report";
+const PATH = FN_REPORT_PATH;
 
 const writeFnReport = async ({
   date: { year, qrt },
