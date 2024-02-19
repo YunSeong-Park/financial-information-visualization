@@ -7,9 +7,9 @@ export type Company = {
   modify_date: string;
 };
 
-export type StockCompay = Company & { stock_code: number };
+export type PublicCompay = Company & { stock_code: number };
 
-export const isPublicCompany = (company: Company): company is StockCompay => {
+export const isPublicCompany = (company: Company): company is PublicCompay => {
   if (!company.stock_code) {
     return false;
   }
