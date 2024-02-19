@@ -32,6 +32,7 @@ model Account {
   report_rept_no String
 
   account_name  String
+  account_id    String
   account_value BigInt
   sj_name       String
 

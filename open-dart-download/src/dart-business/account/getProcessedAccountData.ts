@@ -35,7 +35,7 @@ function* getProcessedAccountData(): IterableIterator<AccountSQL> {
         report_rept_no: account.rcept_no,
         account_name: account.account_nm,
         account_value: BigInt(account_value),
-        // account_id: account.account_id,
+        account_id: account.account_id,
         sj_name: account.sj_nm,
       };
     }
