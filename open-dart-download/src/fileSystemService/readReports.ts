@@ -1,12 +1,13 @@
 import fs from "fs";
 import { readPublicCompanyList } from "./publicCompanyList";
 import { FN_REPORT_PATH } from "./fileSystem.const";
-import { Company } from "../dart-business/company/company.type";
+import { Company, PublicCompay } from "../dart-business/company/company.type";
+
 import { Account } from "../dart-business/account/account.type";
 
 const PATH = FN_REPORT_PATH;
 
-export function* readFnCompanyList(): IterableIterator<Company> {
+export function* readFnCompanyList(): IterableIterator<PublicCompay> {
   const files = fs.readdirSync(PATH);
 
   const companyList = readPublicCompanyList();
@@ -31,10 +32,12 @@ export function* readFnReportList(): IterableIterator<Account[]> {
         `${PATH}/${company!.corp_name}/${reportName}`,
         "utf8"
       );
-
-      const report: Account[] = JSON.parse(reportString);
-
-      yield report;
+      try {
+        const report: Account[] = JSON.parse(reportString);
+        yield report;
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 }
