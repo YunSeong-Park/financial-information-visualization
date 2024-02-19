@@ -1,6 +1,6 @@
 import { downloadCompanyList } from "../../api";
 import { xmlZip2jsonList } from "../../dataFarser/xmlZip2data";
-import { Company } from "./company.type";
+import { Company, isPublicCompany } from "./company.type";
 
 const getCompanyList = async (): Promise<Company[]> => {
   const data = await downloadCompanyList();
@@ -25,5 +25,5 @@ export default getCompanyList;
 export const getPublicCompanyList = async () => {
   const companyList = await getCompanyList();
 
-  return companyList.filter((company) => !!Number(company.stock_code));
+  return companyList.filter(isPublicCompany);
 };

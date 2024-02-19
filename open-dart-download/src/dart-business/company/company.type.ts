@@ -9,7 +9,7 @@ export type Company = {
 
 export type StockCompay = Company & { stock_code: number };
 
-export const isStockCompany = (company: Company): company is StockCompay => {
+export const isPublicCompany = (company: Company): company is StockCompay => {
   if (!company.stock_code) {
     return false;
   }
