@@ -38,5 +38,5 @@ model Account {
 
   report Report @relation(fields: [report_rept_no], references: [rcept_no])
 
-  @@id([report_rept_no, account_name])
+  @@id([report_rept_no, account_name, sj_name])
 }
