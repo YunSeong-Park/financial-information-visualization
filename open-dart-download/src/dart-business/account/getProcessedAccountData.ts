@@ -30,10 +30,11 @@ function* getProcessedAccountData(): IterableIterator<AccountSQL> {
           );
         }
       }
+      const account_name = account.account_nm.replace("(손실)", "");
 
       yield {
         report_rept_no: report[0].rcept_no,
-        account_name: account.account_nm,
+        account_name,
         account_value: BigInt(account_value),
         account_id: account.account_id,
         sj_name: account.sj_nm,
