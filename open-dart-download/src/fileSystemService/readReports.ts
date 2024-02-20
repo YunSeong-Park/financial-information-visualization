@@ -11,6 +11,7 @@ export function* readFnCompanyList(): IterableIterator<PublicCompay> {
   const files = fs.readdirSync(PATH);
 
   const companyList = readPublicCompanyList();
+
   let companyName: string | undefined;
   while ((companyName = files.pop())) {
     const company = companyList.find(
@@ -34,9 +35,13 @@ export function* readFnReportList(): IterableIterator<Account[]> {
       );
       try {
         const report: Account[] = JSON.parse(reportString);
-        yield report;
+        yield report.map((account) => {
+          if (company) return { ...account, corp_code: company.corp_code };
+
+          return account;
+        });
       } catch (e) {
-        console.log(e);
+        console.log(e, reportString, company);
       }
     }
   }

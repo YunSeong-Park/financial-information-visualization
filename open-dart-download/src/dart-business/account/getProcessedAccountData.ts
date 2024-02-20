@@ -32,7 +32,7 @@ function* getProcessedAccountData(): IterableIterator<AccountSQL> {
       }
 
       yield {
-        report_rept_no: account.rcept_no,
+        report_rept_no: report[0].rcept_no,
         account_name: account.account_nm,
         account_value: BigInt(account_value),
         account_id: account.account_id,
