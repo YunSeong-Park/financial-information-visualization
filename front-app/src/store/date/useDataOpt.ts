@@ -2,144 +2,148 @@ import { create } from "zustand";
 import { immerable, produce } from "immer";
 import { QrtDate, YearDate } from "@/store/date/customDate";
 
-type YearPriodType = {
+type YearPeriodType = {
   type: "year";
   date: YearDate;
 };
-type QrtPriodType = {
+type QrtPeriodType = {
   type: "qrt";
   date: QrtDate;
 };
-type Stack4QrtPriodType = {
+type Stack4QrtPeriodType = {
   type: "4qrtStack";
   date: QrtDate;
 };
 
-export type PriodType = YearPriodType | QrtPriodType | Stack4QrtPriodType;
+export type PeriodType = YearPeriodType | QrtPeriodType | Stack4QrtPeriodType;
 
-abstract class PriodManager<Type extends PriodType = PriodType> {
+abstract class PeriodManager<Type extends PeriodType = PeriodType> {
   [immerable] = true;
 
   abstract readonly type: Type["type"];
   abstract get dateList(): Type["date"][];
 
-  abstract priod: [Type["date"], Type["date"]];
+  abstract period: [Type["date"], Type["date"]];
 
-  abstract updatePriod(priod: [Type["date"], Type["date"]]): PriodManager<Type>;
+  abstract updatePeriod(
+    period: [Type["date"], Type["date"]]
+  ): PeriodManager<Type>;
 }
 
-class YearPriodManager extends PriodManager<YearPriodType> {
+class YearPeriodManager extends PeriodManager<YearPeriodType> {
   public readonly type = "year";
-  private _dateList: YearPriodType["date"][];
-  public priod: [YearPriodType["date"], YearPriodType["date"]];
+  private _dateList: YearPeriodType["date"][];
+  public period: [YearPeriodType["date"], YearPeriodType["date"]];
 
   constructor({
     dateRange,
   }: {
-    dateRange: [YearPriodType["date"], YearPriodType["date"]];
+    dateRange: [YearPeriodType["date"], YearPeriodType["date"]];
   }) {
     super();
 
     this._dateList = dateRange[0].getDateList(dateRange[1]);
 
-    this.priod = [this._dateList.at(0)!, this._dateList.at(-1)!];
+    this.period = [this._dateList.at(0)!, this._dateList.at(-1)!];
   }
 
   get dateList() {
     return this._dateList;
   }
-  updatePriod(priod: [YearPriodType["date"], YearPriodType["date"]]) {
-    return produce(this, (draft: PriodManager<YearPriodType>) => {
-      if (draft.priod[0] !== priod[0]) {
-        draft.priod[0] = priod[0];
+  updatePeriod(period: [YearPeriodType["date"], YearPeriodType["date"]]) {
+    return produce(this, (draft: PeriodManager<YearPeriodType>) => {
+      if (draft.period[0] !== period[0]) {
+        draft.period[0] = period[0];
       }
-      if (draft.priod[1] !== priod[1]) {
-        draft.priod[1] = priod[1];
+      if (draft.period[1] !== period[1]) {
+        draft.period[1] = period[1];
       }
     });
   }
 }
 
-class QrtPriodManager extends PriodManager<QrtPriodType> {
+class QrtPeriodManager extends PeriodManager<QrtPeriodType> {
   public readonly type = "qrt";
-  private _dateList: QrtPriodType["date"][];
-  public priod: [QrtPriodType["date"], QrtPriodType["date"]];
+  private _dateList: QrtPeriodType["date"][];
+  public period: [QrtPeriodType["date"], QrtPeriodType["date"]];
 
   constructor({
     dateRange,
   }: {
-    dateRange: [QrtPriodType["date"], QrtPriodType["date"]];
+    dateRange: [QrtPeriodType["date"], QrtPeriodType["date"]];
   }) {
     super();
 
     this._dateList = dateRange[0].getDateList(dateRange[1]);
 
-    this.priod = [this._dateList.at(0)!, this._dateList.at(-1)!];
+    this.period = [this._dateList.at(0)!, this._dateList.at(-1)!];
   }
 
   get dateList() {
     return this._dateList;
   }
-  updatePriod(priod: [QrtPriodType["date"], QrtPriodType["date"]]) {
-    return produce(this, (draft: PriodManager<QrtPriodType>) => {
-      if (draft.priod[0] !== priod[0]) {
-        draft.priod[0] = priod[0];
+  updatePeriod(period: [QrtPeriodType["date"], QrtPeriodType["date"]]) {
+    return produce(this, (draft: PeriodManager<QrtPeriodType>) => {
+      if (draft.period[0] !== period[0]) {
+        draft.period[0] = period[0];
       }
-      if (draft.priod[1] !== priod[1]) {
-        draft.priod[1] = priod[1];
+      if (draft.period[1] !== period[1]) {
+        draft.period[1] = period[1];
       }
     });
   }
 }
 
-class Stack4QrtPriodManager extends PriodManager<Stack4QrtPriodType> {
+class Stack4QrtPeriodManager extends PeriodManager<Stack4QrtPeriodType> {
   public readonly type = "4qrtStack";
-  private _dateList: Stack4QrtPriodType["date"][];
-  public priod: [Stack4QrtPriodType["date"], Stack4QrtPriodType["date"]];
+  private _dateList: Stack4QrtPeriodType["date"][];
+  public period: [Stack4QrtPeriodType["date"], Stack4QrtPeriodType["date"]];
 
   constructor({
     dateRange,
   }: {
-    dateRange: [Stack4QrtPriodType["date"], Stack4QrtPriodType["date"]];
+    dateRange: [Stack4QrtPeriodType["date"], Stack4QrtPeriodType["date"]];
   }) {
     super();
 
     this._dateList = dateRange[0].getDateList(dateRange[1]);
 
-    this.priod = [this._dateList.at(0)!, this._dateList.at(-1)!];
+    this.period = [this._dateList.at(0)!, this._dateList.at(-1)!];
   }
 
   get dateList() {
     return this._dateList;
   }
-  updatePriod(priod: [Stack4QrtPriodType["date"], Stack4QrtPriodType["date"]]) {
-    return produce(this, (draft: PriodManager<Stack4QrtPriodType>) => {
-      if (draft.priod[0] !== priod[0]) {
-        draft.priod[0] = priod[0];
+  updatePeriod(
+    period: [Stack4QrtPeriodType["date"], Stack4QrtPeriodType["date"]]
+  ) {
+    return produce(this, (draft: PeriodManager<Stack4QrtPeriodType>) => {
+      if (draft.period[0] !== period[0]) {
+        draft.period[0] = period[0];
       }
-      if (draft.priod[1] !== priod[1]) {
-        draft.priod[1] = priod[1];
+      if (draft.period[1] !== period[1]) {
+        draft.period[1] = period[1];
       }
     });
   }
 }
 
-export const usePriod = create<{
-  priod: PriodManager;
-  setPriod: (priod: [PriodType["date"], PriodType["date"]]) => void;
-  switchType: (type: PriodType["type"]) => void;
+export const usePeriod = create<{
+  period: PeriodManager;
+  setPeriod: (period: [PeriodType["date"], PeriodType["date"]]) => void;
+  switchType: (type: PeriodType["type"]) => void;
 }>((set, state) => {
-  const priods = {
-    year: new YearPriodManager({
+  const periods = {
+    year: new YearPeriodManager({
       dateRange: [new YearDate({ year: 2017 }), new YearDate({ year: 2023 })],
     }),
-    qrt: new QrtPriodManager({
+    qrt: new QrtPeriodManager({
       dateRange: [
         new QrtDate({ year: 2017, qrt: 1 }),
         new QrtDate({ year: 2023, qrt: 3 }),
       ],
     }),
-    "4qrtStack": new Stack4QrtPriodManager({
+    "4qrtStack": new Stack4QrtPeriodManager({
       dateRange: [
         new QrtDate({ year: 2017, qrt: 1 }),
         new QrtDate({ year: 2023, qrt: 3 }),
@@ -148,12 +152,12 @@ export const usePriod = create<{
   } as const;
 
   return {
-    priod: priods["year"],
-    setPriod: (priod: [PriodType["date"], PriodType["date"]]) => {
-      set({ priod: state().priod.updatePriod(priod) });
+    period: periods["year"],
+    setPeriod: (period: [PeriodType["date"], PeriodType["date"]]) => {
+      set({ period: state().period.updatePeriod(period) });
     },
-    switchType: (type: PriodType["type"]) => {
-      set({ priod: priods[type] });
+    switchType: (type: PeriodType["type"]) => {
+      set({ period: periods[type] });
     },
   };
 });
