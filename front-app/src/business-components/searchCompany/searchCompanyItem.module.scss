@@ -1,0 +1,30 @@
+.container {
+  background-color: #fff;
+  border: 1px solid rgb(229, 231, 235);
+  height: 5.8rem;
+
+  & :hover{
+    background-color: rgb(220, 252, 231);
+  }
+
+  &.selected{
+   background-color: rgb(187, 247, 208); 
+
+   & :hover{
+      background-color: rgb(187, 247, 208);
+    } 
+  }
+  
+  > div{
+    display: flex;
+    align-items: center;
+  }
+}
+
+.text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
