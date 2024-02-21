@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { create } from "zustand";
 import { useSubjectStore } from "../subject/useSubject";
 import useCorpCode from "@/hooks/useCorpCode";
-import { CompanyAccount } from "@/server/action";
+import { CompanyAccount } from "@/server/getCompanyAccount";
 
 const useSelectedAccountStore = create<{
   accounts: CompanyAccount[];

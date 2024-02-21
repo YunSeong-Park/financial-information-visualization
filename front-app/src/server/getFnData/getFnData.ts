@@ -9,10 +9,18 @@ import {
   YearDatePlainObj,
 } from "@/store/date/customDate";
 import { CompanyAccount } from "../getCompanyAccount";
-import { PeriodType } from "@/store/date/useDataOpt";
+
 import { getYearAccountData } from "./getYearAccountData";
 import { getQrtAccountData } from "./getQrtAccountData";
 import { get4QrtStackAccountData } from "./get4QrtStackAccountData";
+import {
+  PERIOD_TYPE_QRT,
+  PERIOD_TYPE_QRT4_Stack,
+  PERIOD_TYPE_YEAR,
+  PeriodType,
+  PeriodTypeQrt,
+  PeriodTypeQrt4Stack,
+} from "@/store/date/period.type";
 
 export function getFnData(params: {
   corp_code: string;
@@ -27,7 +35,7 @@ export function getFnData(params: {
 >;
 export function getFnData(params: {
   corp_code: string;
-  periodType: "qrt" | "4qrtStack";
+  periodType: PeriodTypeQrt | PeriodTypeQrt4Stack;
   period: [QrtDatePlainObj, QrtDatePlainObj];
   accounts: CompanyAccount[];
 }): Promise<
@@ -59,12 +67,12 @@ export async function getFnData({
   const startDate = PeriodDateConstructor(period[0]);
   const endDate = PeriodDateConstructor(period[1]);
 
-  if (periodType === "year") {
+  if (periodType === PERIOD_TYPE_YEAR) {
     const period = [startDate, endDate] as [YearDate, YearDate];
     return getYearAccountData({ corp_code, period, accounts });
   }
 
-  if ("qrt" === periodType) {
+  if (periodType === PERIOD_TYPE_QRT) {
     const period = [startDate, endDate] as [QrtDate, QrtDate];
 
     return getQrtAccountData({
@@ -74,7 +82,7 @@ export async function getFnData({
     });
   }
 
-  if ("4qrtStack" === periodType) {
+  if (PERIOD_TYPE_QRT4_Stack === periodType) {
     const period = [startDate, endDate] as [QrtDate, QrtDate];
     return get4QrtStackAccountData({ corp_code, period, accounts });
   }

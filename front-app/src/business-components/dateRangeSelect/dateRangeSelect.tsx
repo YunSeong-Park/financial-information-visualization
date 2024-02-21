@@ -1,7 +1,7 @@
 "use client";
 
 import MultiSelect from "@/presentation-components/multiSelect/multiSelect";
-import { usePeriod } from "@/store/date/useDataOpt";
+import { usePeriod } from "@/store/date/usePeriod";
 
 const DateRangeSelect = () => {
   const period = usePeriod();

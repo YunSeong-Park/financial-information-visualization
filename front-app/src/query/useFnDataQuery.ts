@@ -4,7 +4,7 @@ import {
   PeriodDateConstructor,
   PeriodDatePlainObj,
 } from "@/store/date/customDate";
-import { usePeriod } from "@/store/date/useDataOpt";
+import { usePeriod } from "@/store/date/usePeriod";
 
 import useSelectedAccountStore from "@/store/selectedAccount/selectedAccountStore";
 import { useQuery } from "@tanstack/react-query";
