@@ -4,7 +4,7 @@ import { Flex, Text } from "@radix-ui/themes";
 import styles from "./redirection.module.scss";
 import { SVGProps, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import LoaderIcon from "@/atom-components/icon/loaderIcon";
+import LoaderIcon from "@/presentation-components/icon/loaderIcon";
 
 interface RedirectionProps {
   path?: string;
