@@ -1,6 +1,6 @@
 # financial-information-visualization
 
-(데모 링크)
+데모 링크: http://192.168.0.12:3000/
 
 ## 개요
 
