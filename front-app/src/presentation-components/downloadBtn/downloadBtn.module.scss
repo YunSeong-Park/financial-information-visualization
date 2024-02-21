@@ -1,0 +1,10 @@
+.btn {
+  background-color: rgb(31, 41, 55);
+  color: #fff;
+  cursor: pointer;
+  &:disabled {
+    background-color: rgba(31, 41, 55, 0.5);
+    color: #ccc;
+    cursor: not-allowed;
+  }
+}
