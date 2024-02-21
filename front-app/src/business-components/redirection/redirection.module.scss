@@ -1,0 +1,28 @@
+.container {
+  height: 100dvh;
+}
+
+.loading_icon {
+  height: 4.8rem;
+  width: 4.8rem;
+  animation: spin 1.5s linear infinite !important;
+}
+
+.title{
+  margin-top: 1.6rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(75, 85, 99);
+}
+
+.subtitle{
+  margin-top: 0.8rem;
+  font-size: 1.6rem;
+  color: rgb(107, 114, 128);
+}
+
+@keyframes spin{
+  100% {
+      transform: rotate(360deg);
+  }
+}
