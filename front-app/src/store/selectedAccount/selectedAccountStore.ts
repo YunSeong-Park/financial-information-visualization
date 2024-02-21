@@ -20,7 +20,7 @@ const useSelectedAccountStore = create<{
         (item) => item.account_name === account.account_name
       );
       if (idx === -1) {
-        draft.push(account);
+        draft.push({ ...account });
       } else {
         draft.splice(idx, 1);
       }

@@ -19,16 +19,20 @@ const AccountList = () => {
     (account) => account.sj_name === subject.subject
   );
 
+  console.log(selected.accounts);
+
   return (
     <div>
       {accounts?.accounts.map((account) => (
-        <Text as="label" key={account.account_id}>
+        <Text as="label" key={account.account_name}>
           <Flex gap="2" align="center">
             <Checkbox
               onClick={() => {
                 selected.toggleAccount(account);
               }}
-              checked={selected.accounts.includes(account)}
+              checked={selected.accounts.some(
+                (item) => item.account_name === account.account_name
+              )}
             />
             <span className={styles.account_label}>{account.account_name}</span>
           </Flex>
