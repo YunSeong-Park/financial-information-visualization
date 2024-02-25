@@ -46,6 +46,8 @@ open dart 데이터 수집용 프로그램
 - `@radix-ui`, `react-query`, `immer`
 - `memoizee`, `Rechart`
 
+<br/>
+
 ## 데이터 흐름도
 
 ![데이터 흐름도](./assets/data-flow-chart.jpeg)
