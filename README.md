@@ -30,14 +30,14 @@ http://220.88.48.34:3000/
 
 ## 프로젝트 구성 및 스택
 
-### Open Dart Download
+### [Open Dart Download](./open-dart-download/README.md)
 
 open dart 데이터 수집용 프로그램
 
 - `Javascript`, `Typescript`, `Node.js`
 - `Prisma`, `PostgreSQL`, `Axios`
 
-### Front App
+### [Front App](./front-app//README.md)
 
 수집된 데이터를 탐색/시각화용 프로그램
 

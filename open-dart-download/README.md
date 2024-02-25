@@ -14,7 +14,7 @@ DATABASE_URL= 데이터 베이스 URL
 
 2. prisma 초기화
 
-```cli
+```bash
 npx prisma migrate dev
 ```
 
@@ -22,7 +22,7 @@ npx prisma migrate dev
 
 DART_API_KEY는 1일 2만회 호출 제한이 있습니다. 하루에 한번씩 실행하거나, DART_API_KEY 를 여러개 발급 받아 여러번 실행해야 합니다.
 
-```cli
+```bash
 // npm 이용시
 npm start download
 
@@ -32,7 +32,7 @@ yarn start download
 
 4. sql 데이터 입력
 
-```cli
+```bash
 // npm 이용시
 npm start sql
 
