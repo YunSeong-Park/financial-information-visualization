@@ -36,12 +36,12 @@ const getLevenshteinDistance =
 
 const findSimilarString = (list: string[], length: number = 5) => {
   const parsedList = list.map((item) => ({
-    decomposed: KoreaJamoUtil.split(item).join(""),
+    decomposed: KoreaJamoUtil.split(item).join("").toUpperCase(),
     origin: item,
   }));
 
   return (string: string) => {
-    const decomposedString = KoreaJamoUtil.split(string).join("");
+    const decomposedString = KoreaJamoUtil.split(string).join("").toUpperCase();
     const levenshteinDistance = getLevenshteinDistance(decomposedString);
 
     const sorted = parsedList
