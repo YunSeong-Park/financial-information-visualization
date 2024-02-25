@@ -1,5 +1,5 @@
 .container {
-  flex: 0 1 65vh;
+  flex: 1 1 calc(var(--vh, 1dvh) * 65);
 
   overflow: auto;
   gap: 0.8rem

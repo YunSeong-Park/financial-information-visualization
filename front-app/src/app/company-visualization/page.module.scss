@@ -1,5 +1,5 @@
 .container {
-  height: 100dvh;
+  height: calc(var(--vh, 1dvh) * 100);
   padding: 1.6rem;
   gap: 0.8rem;
 }

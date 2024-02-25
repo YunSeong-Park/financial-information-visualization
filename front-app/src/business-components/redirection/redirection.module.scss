@@ -1,6 +1,5 @@
 .container {
-  height: 100dvh;
-}
+  height:calc(var(--vh, 1dvh) * 100);}
 
 .loading_icon {
   height: 4.8rem;

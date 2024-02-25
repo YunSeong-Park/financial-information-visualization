@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import useCorpCode from "@/hooks/useCorpCode";
 import { useSearchCompany } from "@/store/search/useSearchCompany";
 import { searchCompanyList } from "@/server/searchCompanyList";
+import { useUpdateVh } from "@/hooks/useUpdateVh";
 
 const SearchCompanyList = () => {
   const search = useSearchCompany((state) => state.search);
@@ -80,6 +81,8 @@ const SearchCompanyList = () => {
       removeEventListener("keydown", moveCompanyAnalysis);
     };
   }, [getCurrentCompany]);
+
+  useUpdateVh();
 
   return (
     <Flex direction="column" className={styles.container}>

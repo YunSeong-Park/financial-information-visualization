@@ -1,4 +1,4 @@
 .root{
-  min-height: 100dvh;
+  height:calc(var(--vh, 1dvh) * 100);
   background-color: rgb(243, 244, 246);
 }
