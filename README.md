@@ -13,9 +13,11 @@ http://220.88.48.34:3000/
 - 차트 시각화
 - 데이터 파일 (csv 등)
 
+<br/>
+
 ## 동기
 
-[dart](https://dart.fss.or.kr/) 를 통해 재무제표 데이터를 수집할 때 다음과 같은 문제에 부딪힙니다.
+[dart](https://dart.fss.or.kr/) 를 통해 재무제표 데이터를 수집할 때 다음과 같은 문제에 부딪힙니다. 아래 문제들을 해결하기 위해 프로젝트를 만들었습니다.
 
 - 많은 보고서 조회: 4년치 재무제표 데이터를 수집하고자 한다면 16개(4년 x 4분기) 보고서를 조회해야함.
 - 분기 상세 데이터 미제공: 2023년 이전 보고서는 3개월 단위 계정 값을 제공하지 않음.  
@@ -24,11 +26,33 @@ http://220.88.48.34:3000/
 - 기간별로 다른 계정명: 동일한 계정의 이름이 바뀌는 경우가 있음.  
    ex) 매출 => 수익(매출액)
 
-## 프로젝트 구성
+<br/>
 
-- open-dart-download: open dart 데이터 수집용 프로그램
-- front-app: 수집된 데이터를 탐색/시각화용 프로그램
+## 프로젝트 구성 및 스택
+
+### Open Dart Download
+
+open dart 데이터 수집용 프로그램
+
+- `Javascript`, `Typescript`, `Node.js`
+- `Prisma`, `PostgreSQL`, `Axios`
+
+### Front App
+
+수집된 데이터를 탐색/시각화용 프로그램
+
+- `Javascript`, `Typescript`, `React`
+- `Next.js`, `Server Action`, `zustand`
+- `@radix-ui`, `react-query`, `immer`
+- `memoizee`, `Rechart`
 
 ## 데이터 흐름도
 
 ![데이터 흐름도](./assets/data-flow-chart.jpeg)
+
+<br/>
+
+### 개발 기간 & 일정
+
+- 1차 : 2024.1.1 ~ 2024.2.24
+- 리팩토링 : 2024.02.25 ~ 진행중
