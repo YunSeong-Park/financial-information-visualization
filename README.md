@@ -31,4 +31,4 @@ http://220.88.48.34:3000/
 
 ## 데이터 흐름도
 
-![데이터 흐름도](./assets/data-flow-chart.png)
+![데이터 흐름도](./assets/data-flow-chart.jpeg)
