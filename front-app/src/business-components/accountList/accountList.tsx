@@ -19,8 +19,6 @@ const AccountList = () => {
     (account) => account.sj_name === subject.subject
   );
 
-  console.log(selected.accounts);
-
   return (
     <div>
       {accounts?.accounts.map((account) => (

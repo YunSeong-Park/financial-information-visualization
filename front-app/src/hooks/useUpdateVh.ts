@@ -2,9 +2,8 @@
 import { useEffect } from "react";
 
 function updateVH() {
-  console.log("test");
   const height = window.visualViewport?.height;
-  console.log(height);
+
   if (!height) {
     return;
   }
