@@ -18,7 +18,7 @@ const SearchTextField = () => {
         ref={inputEl}
         value={search}
         onChange={(e: any) => setSearch(e.target.value)}
-        placeholder="Search for a company"
+        placeholder="회사명을 입력해주세요."
         onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
           if (["ArrowDown", "ArrowUp"].includes(e.key)) {
             e.preventDefault();
