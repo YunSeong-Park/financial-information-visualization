@@ -68,20 +68,12 @@ export const get4QrtStackAccountData = async ({
         const prev = result.at(-1);
 
         const over4Qrt =
-          (prev?.date.year || 0) >= curr.date.year + 1 &&
-          (prev?.date.qrt || 0) >= curr.date.qrt;
+          !prev ||
+          ((prev?.date.year || 0) >= curr.date.year + 1 &&
+            (prev?.date.qrt || 0) >= curr.date.qrt);
 
-        if (!prev || over4Qrt) {
-          result.push({
-            ...curr,
-            accounts: accounts.map((account) => ({
-              account_name: account.account_name,
-              account_value:
-                curr.accounts.find(
-                  (item) => item.account_id === account.account_id
-                )?.account_value || 0,
-            })),
-          });
+        if (over4Qrt) {
+          result.push(JSON.parse(JSON.stringify(curr)));
           return result;
         }
 
