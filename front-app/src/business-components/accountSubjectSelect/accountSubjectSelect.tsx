@@ -1,13 +1,15 @@
 "use client";
 import useCompanyAccountQuery from "@/query/useCompanyAccountQuery";
 
-import { ACCOUNT_SUBJECT, useSubjectStore } from "@/store/subject/useSubject";
+import { ACCOUNT_SUBJECT } from "@/store/subject/useSubject";
+import { useVisualizationStore } from "@/store/visualizationStore";
 import { Select } from "@radix-ui/themes";
 
 const AccountSubjectSelect = () => {
   const accounts = useCompanyAccountQuery();
 
-  const subject = useSubjectStore();
+  const subject = useVisualizationStore((state) => state.subject);
+  const setSubject = useVisualizationStore((state) => state.setSubject);
 
   const sjSet = accounts.data?.reduce((acc, account) => {
     acc.add(account.sj_name);
@@ -16,8 +18,8 @@ const AccountSubjectSelect = () => {
 
   return (
     <Select.Root
-      value={subject.subject}
-      onValueChange={(value: any) => subject.setSubject(value)}
+      value={subject}
+      onValueChange={(value: any) => setSubject(value)}
     >
       <Select.Trigger />
       <Select.Content>

@@ -1,22 +1,22 @@
 "use client";
 
 import useCompanyAccountQuery from "@/query/useCompanyAccountQuery";
-import useSelectedAccountStore, {
-  useResetSelectedAcount,
-} from "@/store/selectedAccount/selectedAccountStore";
-import { useSubjectStore } from "@/store/subject/useSubject";
+
 import { Text, Flex, Checkbox } from "@radix-ui/themes";
 import styles from "./accountList.module.scss";
+import {
+  useResetSelectedAccounts,
+  useVisualizationStore,
+} from "@/store/visualizationStore";
 
 const AccountList = () => {
   const account = useCompanyAccountQuery();
-  const subject = useSubjectStore();
-  const selected = useSelectedAccountStore();
+  const visStore = useVisualizationStore();
 
-  useResetSelectedAcount();
+  useResetSelectedAccounts();
 
   const accounts = account.data?.find(
-    (account) => account.sj_name === subject.subject
+    (account) => account.sj_name === visStore.subject
   );
 
   return (
@@ -26,9 +26,9 @@ const AccountList = () => {
           <Flex gap="2" align="center">
             <Checkbox
               onClick={() => {
-                selected.toggleAccount(account);
+                visStore.toggleAccount(account);
               }}
-              checked={selected.accounts.some(
+              checked={visStore.accounts.some(
                 (item) => item.account_name === account.account_name
               )}
             />

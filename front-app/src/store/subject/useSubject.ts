@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { StateCreator } from "zustand";
 
 export const ACCOUNT_SUBJECT = [
   "재무상태표",
@@ -9,19 +9,21 @@ export const ACCOUNT_SUBJECT = [
 
 type AccountSubject = (typeof ACCOUNT_SUBJECT)[number];
 
-type SubjectState = {
+export type SubjectState = {
   subject: AccountSubject;
 };
 
-type SubjectAction = {
+export type SubjectAction = {
   setSubject: (subject: AccountSubject) => void;
 };
 
-export const useSubjectStore = create<SubjectAction & SubjectState>((set) => {
+export const createSubjectStore: StateCreator<SubjectAction & SubjectState> = (
+  set
+) => {
   return {
     subject: ACCOUNT_SUBJECT[0],
     setSubject: (subject) => {
       set({ subject });
     },
   };
-});
+};

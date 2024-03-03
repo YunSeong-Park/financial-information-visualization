@@ -4,16 +4,14 @@ import {
   PeriodDateConstructor,
   PeriodDatePlainObj,
 } from "@/store/date/customDate";
-import { usePeriod } from "@/store/date/usePeriod";
-
-import useSelectedAccountStore from "@/store/selectedAccount/selectedAccountStore";
+import { useVisualizationStore } from "@/store/visualizationStore";
 import { useQuery } from "@tanstack/react-query";
 
 const useFnDataQuery = () => {
   const corp_code = useCorpCode();
-  const period = usePeriod((state) => state.period.period);
-  const periodType = usePeriod((state) => state.period.type);
-  const accounts = useSelectedAccountStore((state) => state.accounts);
+  const period = useVisualizationStore((state) => state.period.period);
+  const periodType = useVisualizationStore((state) => state.period.type);
+  const accounts = useVisualizationStore((state) => state.accounts);
 
   return useQuery({
     queryKey: ["vis", corp_code, period, accounts, periodType],

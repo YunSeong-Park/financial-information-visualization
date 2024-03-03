@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { StateCreator } from "zustand";
 
 import { QrtDate, YearDate } from "@/store/date/customDate";
 import { PeriodManager, PeriodType } from "./period.type";
@@ -6,11 +6,19 @@ import YearPeriodManager from "./yearPeriodManager";
 import QrtPeriodManager from "./qrtPeriodManager";
 import Stack4QrtPeriodManager from "./stack4QrtPeriodManager";
 
-export const usePeriod = create<{
+export type PeriodState = {
   period: PeriodManager;
+};
+
+export type PeriodAction = {
   setPeriod: (period: [PeriodType["date"], PeriodType["date"]]) => void;
   switchType: (type: PeriodType["type"]) => void;
-}>((set, state) => {
+};
+
+export const createPeriodStore: StateCreator<PeriodState & PeriodAction> = (
+  set,
+  state
+) => {
   const periods = {
     year: new YearPeriodManager({
       dateRange: [new YearDate({ year: 2017 }), new YearDate({ year: 2023 })],
@@ -38,4 +46,4 @@ export const usePeriod = create<{
       set({ period: periods[type] });
     },
   };
-});
+};

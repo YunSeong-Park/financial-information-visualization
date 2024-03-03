@@ -1,15 +1,16 @@
 "use client";
 
 import MultiSelect from "@/presentation-components/multiSelect/multiSelect";
-import { usePeriod } from "@/store/date/usePeriod";
+import { useVisualizationStore } from "@/store/visualizationStore";
 
 const DateRangeSelect = () => {
-  const period = usePeriod();
+  const period = useVisualizationStore((state) => state.period);
+  const setPeriod = useVisualizationStore((state) => state.setPeriod);
 
   return (
     <MultiSelect
-      itemList={period.period.dateList}
-      value={period.period.period}
+      itemList={period.dateList}
+      value={period.period}
       valueLength={2}
       onValueChange={(value) => {
         if (value.length !== 2) {
@@ -17,7 +18,7 @@ const DateRangeSelect = () => {
         }
         const lowIndex = value[0] < value[1] ? 0 : 1;
 
-        period.setPeriod([value[lowIndex], value[1 - lowIndex]]);
+        setPeriod([value[lowIndex], value[1 - lowIndex]]);
       }}
       itemLabelRenderer={(date) => date.toString()}
       triggerLabelRenderer={(period) =>

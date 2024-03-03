@@ -1,11 +1,12 @@
 "use client";
 import { PERIOD_TYPE_LIST } from "@/store/date/period.type";
-import { usePeriod } from "@/store/date/usePeriod";
+import { useVisualizationStore } from "@/store/visualizationStore";
+
 import { Select } from "@radix-ui/themes";
 
 const PeriodUnitSelect = () => {
-  const type = usePeriod((state) => state.period.type);
-  const switchType = usePeriod((state) => state.switchType);
+  const type = useVisualizationStore((state) => state.period.type);
+  const switchType = useVisualizationStore((state) => state.switchType);
   return (
     <Select.Root value={type} onValueChange={(value: any) => switchType(value)}>
       <Select.Trigger />
