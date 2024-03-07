@@ -3,6 +3,12 @@ export type PeriodDatePlainObj = YearDatePlainObj | QrtDatePlainObj;
 export type YearDatePlainObj = { year: number };
 export type QrtDatePlainObj = { year: number; qrt: number };
 
+export const isPeriodDate = (date: unknown): date is PeriodDate => {
+  return (
+    date instanceof Date && ["year", "qrt"].includes((date as PeriodDate).type)
+  );
+};
+
 export interface PeriodDate<T extends Date = Date> extends Date {
   get type(): "year" | "qrt";
   getDateList(date: PeriodDate): PeriodDate[];
