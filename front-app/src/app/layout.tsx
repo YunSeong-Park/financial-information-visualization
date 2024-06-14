@@ -12,7 +12,13 @@ import Redirection from "@/business-components/redirection/redirection";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5분 동안 데이터가 신선하다고 간주
+    },
+  },
+});
 
 export default function RootLayout({
   children,
