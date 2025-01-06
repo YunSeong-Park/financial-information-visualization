@@ -1,10 +1,9 @@
 # financial-information-visualization
 
-### 데모 링크
-
-추후 추가
-
 ## 개요
+
+![회사 검색](./assets/search-full.png)
+![재무제표 시각화](./assets/visualization.png)
 
 해당 프로젝트는 [open dart](https://opendart.fss.or.kr/) 의 openAPI를 이용해 국내 회사 상장사들의 재무제표를 수집하고, 수집한 데이터를 손쉽게 제공하고자 만든 프로젝트입니다.
 
@@ -57,3 +56,7 @@ open dart 데이터 수집용 프로그램
 ### 개발 기간 & 일정
 
 - 1차 : 2024.1.1 ~ 2024.2.24
+
+### 데모 링크
+
+추후 추가
