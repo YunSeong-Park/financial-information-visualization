@@ -1,4 +1,4 @@
-# financial-information-visualization
+# 재무제표 시각화 프로젝트
 
 ## 개요
 
